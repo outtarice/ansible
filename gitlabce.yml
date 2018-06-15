@@ -1,0 +1,8 @@
+---
+- name: gitlabce VM
+  hosts: ctu1801
+  gather_facts: True
+
+  roles:
+  - base
+  - gitlabce

@@ -1,0 +1,7 @@
+---
+- name: Proxmox VMs
+  hosts: ctu1800
+  gather_facts: True
+
+  roles:
+  - base

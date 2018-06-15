@@ -1,0 +1,67 @@
+- name: Install python minimal
+  raw: apt-get install python-minimal aptitude -y
+  when: ansible_pkg_mgr == 'apt'
+
+- name: Install epel-release
+  raw: yum -y install epel-release
+  when: ansible_pkg_mgr == 'yum'
+
+- name: Install base packages
+  package: name={{ item }} state=present
+  with_items:
+    - net-tools
+    - sysstat
+    - vim
+    - wget
+  tags:
+    - packages
+
+- name: Update /etc/hosts file
+  lineinfile:
+    dest: /etc/hosts
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - '10.0.0.40        ctu1800 ctu1800-ansible'
+    - '10.0.0.41        ctu1801'
+    - '10.0.0.42        ctd802'
+    - '10.0.0.43        ctc703'
+    - '10.0.0.50        vmc700  vmc700-ansible'
+    - '10.0.0.51        vmc701'
+    - '10.0.0.52        vmc702'
+    - '10.0.0.53        vmc703'
+
+- name: Update /root/.ssh/authorized_keys
+  lineinfile:
+    dest: /root/.ssh/authorized_keys
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA3PzWlJGIZ94yqcXPKSrL/vxhTiO5SjDtgrB08qVnA4OWQs/ll+U9LvMcaLtNfJyRbXidbQJPDzZNftKkqS2G2CnHOlPvNHleTjCu0aqz/IeAq/jBXWY9PGWGoXtduJteILrlY97AjNzD2u3asgZV2NDIl9qFjBP5G0p2QUEmck1k8T8/arLHqn3vmWK7W5ta0dJZmYTkySF/e7nbzu7kkI6skdtZtaWdRe86O4ckF5XASXVnN5pr34uUxmBBxAjsSS1OA9W+ydbbTwI+ziXA8ER5yJMZUBYxuGQI7vXfcheproXho+dh114SAIPx6bMQKX1WinYA2kxuo4tF/E9bEw== rsa-key-20180609'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2emeGDlV8NPLG8BNhlq1HEzwW3sRaxP7hss+eLopTZYIP/5l4N4a8kRPkOW/CeuJP1w2yExi583OH6ZUQbNAm6G0rKNipyEAA0ERypNzhEvZSsx4AaHJGnh5u51nOrERvl4pM3t7Pi0BY36jC6k767ODcogrrttVwgcqibhJk6MWEnHv7gD5J3DbSuVXcQV+rBvsFjRiy839p601nx+ifkYJyAvNV4ThEDW+RV1P24tSxNx7/d3Eij5662+26ZP/LbMK9TL5ndDivQavYAw3fKhRmNeJfRwAKvZZiibF+BfdRrzN4v/2HM1WuH9ONTqwVyN7nsNiiW38E50WaUKaf peter@Peters-MacBook-Pro.local'
+
+- name: Update profile
+  lineinfile:
+    dest: /etc/profile
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - 'set -o vi'
+    - 'alias vi=vim'
+
+- name: Update sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - 'AllowAgentForwarding yes'
+    - 'AllowTcpForwarding yes'
+    - 'GatewayPorts yes'
+    - 'UseDNS no'
+    - 'PermitRootLogin yes'
+  notify:
+  - restart sshd 
+
+- name: Upgrade all packages
+  package: name=* state=latest

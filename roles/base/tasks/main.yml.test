@@ -1,0 +1,74 @@
+- name: Install base packages Centos
+  yum: name={{ item }} state=installed
+  with_items:
+    - net-tools
+    - sysstat
+    - vim
+    - wget
+    - epel-release
+  tags:
+    - packages
+  when: ansible_os_family == 'Redhat'
+
+- name: Install base packages Debian
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - net-tools
+    - sysstat
+    - vim
+    - wget
+  tags:
+    - packages
+  when: ansible_os_family == 'Debian'
+
+- name: Update /etc/hosts file
+  lineinfile:
+    dest: /etc/hosts
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - '10.0.0.40        ctc700  ctc700-ansible'
+    - '10.0.0.41        ctd801'
+    - '10.0.0.44        ctd802'
+    - '10.0.0.43        ctc703'
+    - '10.0.0.50        vmc700  vmc700-ansible'
+    - '10.0.0.51        vmc701'
+    - '10.0.0.52        vmc702'
+    - '10.0.0.53        vmc703'
+
+- name: Update /root/.ssh/authorized_keys
+  lineinfile:
+    dest: /root/.ssh/authorized_keys
+    state: present
+    line: 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA3PzWlJGIZ94yqcXPKSrL/vxhTiO5SjDtgrB08qVnA4OWQs/ll+U9LvMcaLtNfJyRbXidbQJPDzZNftKkqS2G2CnHOlPvNHleTjCu0aqz/IeAq/jBXWY9PGWGoXtduJteILrlY97AjNzD2u3asgZV2NDIl9qFjBP5G0p2QUEmck1k8T8/arLHqn3vmWK7W5ta0dJZmYTkySF/e7nbzu7kkI6skdtZtaWdRe86O4ckF5XASXVnN5pr34uUxmBBxAjsSS1OA9W+ydbbTwI+ziXA8ER5yJMZUBYxuGQI7vXfcheproXho+dh114SAIPx6bMQKX1WinYA2kxuo4tF/E9bEw== rsa-key-20180609'
+
+- name: Update profile
+  lineinfile:
+    dest: /etc/profile
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - 'set -o vi'
+    - 'alias vi=vim'
+
+- name: Update sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - 'AllowAgentForwarding yes'
+    - 'AllowTcpForwarding yes'
+    - 'GatewayPorts yes'
+    - 'UseDNS no'
+    - 'PermitRootLogin yes'
+  notify:
+  - restart sshd 
+
+- name: Upgrade all packages Centos
+  yum: name=* state=latest
+  when: anisble_os_family == 'RedHat'
+
+- name: Upgrade all packages Debian
+  apt: apt=* state=latest
+  when: anisble_os_family == 'Debian'
