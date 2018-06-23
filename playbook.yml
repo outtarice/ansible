@@ -1,6 +1,6 @@
 ---
 - name: Proxmox VMs
-  hosts: 10.0.0.149
+  hosts: ctu1800
   gather_facts: True
 
   roles:
