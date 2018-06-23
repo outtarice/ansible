@@ -1,4 +1,3 @@
-# New Branch test iaisdfjl
 # This is the default ansible 'hosts' file.
 #
 # It should live in /etc/ansible/hosts
@@ -53,3 +52,8 @@ vmc701
 vmc702
 vmc703
 
+[hadoop]
+hadoop01
+hadoop02
+hadoop03
+hadoop04

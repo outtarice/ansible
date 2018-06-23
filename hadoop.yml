@@ -1,7 +1,8 @@
 ---
 - name: Proxmox VMs
-  hosts: 10.0.0.149
+  hosts: hadoop
   gather_facts: True
 
   roles:
   - base
+  - hadoop

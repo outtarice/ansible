@@ -30,6 +30,10 @@
     - '10.0.0.51        vmc701'
     - '10.0.0.52        vmc702'
     - '10.0.0.53        vmc703'
+    - '10.0.0.26        hadoop01'
+    - '10.0.0.27        hadoop02'
+    - '10.0.0.28        hadoop03'
+    - '10.0.0.29        hadoop04'
 
 - name: Update /root/.ssh/authorized_keys
   lineinfile:

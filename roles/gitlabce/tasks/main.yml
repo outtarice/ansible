@@ -65,5 +65,3 @@
 
 - name: Upgrade all packages
   package: name=* state=latest
-
-# BLAH

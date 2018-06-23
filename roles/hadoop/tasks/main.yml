@@ -1,0 +1,22 @@
+- name: Update ssh_config
+  lineinfile:
+    path: /etc/ssh/ssh_config
+    state: present
+    line: 'StrictHostKeyChecking no'
+
+- name: Disable selinux
+  lineinfile:
+    path: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'
+
+- name: Disable fastestmirror
+  lineinfile:
+    path: /etc/yum/pluginconf.d/fastestmirror.conf
+    regexp: '^enabled'
+    line: 'enabled=0'
+
+- name: stop/disable iptables
+  service: name=firewalld state=stopped enabled=0
+  notify:
+  - restart network
