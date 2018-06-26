@@ -1,6 +1,6 @@
 ---
 - name: Proxmox VMs
-  hosts: porxmox
+  hosts: proxmox
   gather_facts: True
 
   roles:
