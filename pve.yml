@@ -1,7 +1,7 @@
 ---
 - name: Proxmox VMs
-  hosts: ctu1800
+  hosts: pve1
   gather_facts: True
 
   roles:
-  - base
+  - pve
