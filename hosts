@@ -42,14 +42,12 @@
 
 ## db-[99:101]-node.example.com
 [server]
-vmc700
+vmu1800
 
 [agents]
-ctu1800
-ctu1801
-ctd802
+vmu1801
+vmc700
 vmc701
-vmc702
 
 [hadoop]
 hadoop01
