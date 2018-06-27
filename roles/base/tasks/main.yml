@@ -22,6 +22,14 @@
     state: present
     line: "{{ item }}"
   with_items:
+    - '10.0.0.30        pve'
+    - '10.0.0.31        pve1'
+    - '10.0.0.32        pve2'
+    - '10.0.0.33        pve3'
+    - '10.10.10.30        pve.cls'
+    - '10.10.10.31        pve1.cls'
+    - '10.10.10.32        pve2.cls'
+    - '10.10.10.33        pve3.cls'
     - '10.0.0.40        ctu1800 ctu1800-ansible'
     - '10.0.0.41        ctu1801'
     - '10.0.0.42        ctd802'
@@ -73,6 +81,3 @@
     - 'PermitRootLogin yes'
   notify:
   - restart sshd 
-
-- name: Upgrade all packages
-  package: name=* state=latest
