@@ -1,0 +1,28 @@
+- name: Install base packages
+  apk: name={{ item }} state=present
+  with_items:
+    - bash
+    - ucarp
+    - net-tools
+    - sysstat
+    - wget
+    - lynx
+
+- name: Update sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - 'AllowAgentForwarding yes'
+    - 'AllowTcpForwarding yes'
+    - 'GatewayPorts yes'
+    - 'UseDNS no'
+    - 'PasswordAuthentication no'
+  notify:
+  - restart sshd 
+
+- name: Change root shell to bash
+  user:
+    name: root
+    shell: /bin/bash
