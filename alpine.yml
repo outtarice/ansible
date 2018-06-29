@@ -1,0 +1,7 @@
+---
+- name: Alpine Linux
+  hosts: alpine
+  gather_facts: True
+
+  roles:
+  - hosts

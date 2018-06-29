@@ -49,11 +49,9 @@ vmu1801
 vmc700
 vmc701
 
-[hadoop]
-hadoop01
-hadoop02
-hadoop03
-hadoop04
+[alpine]
+vma3801
+vma3802
 
 [proxmox]
 pve
