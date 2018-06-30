@@ -16,6 +16,5 @@
     - 'AllowTcpForwarding yes'
     - 'GatewayPorts yes'
     - 'UseDNS no'
-    - 'PasswordAuthentication no'
   notify:
   - restart sshd 

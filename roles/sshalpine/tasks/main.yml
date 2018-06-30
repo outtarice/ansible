@@ -1,0 +1,41 @@
+- name: Install base packages
+  apk: name={{ item }} state=present
+  with_items:
+    - ucarp
+    - net-tools
+    - sysstat
+    - wget
+
+- name: Create .ssh
+  file: dest=/root/.ssh state=directory
+
+- name: Copy ssh public keys
+  copy:
+    src: /root/.ssh/authorized_keys
+    dest: /root/.ssh/authorized_keys
+    mode: 0600
+- name: Copy ssh private keys
+  copy:
+    src: /root/.ssh/id_rsa
+    dest: /root/.ssh/id_rsa
+    mode: 0600
+
+- name: Create ucarp pass
+  lineinfile:
+    path: /etc/ucarp/ucarp.pass
+    state: present
+    line: "ucarpdigital"
+
+- name: Update sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - 'AllowAgentForwarding yes'
+    - 'AllowTcpForwarding yes'
+    - 'GatewayPorts yes'
+    - 'UseDNS no'
+    - 'PasswordAuthentication no'
+  notify:
+  - restart sshd 
