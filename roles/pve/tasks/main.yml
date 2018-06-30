@@ -19,7 +19,6 @@
   with_items:
     - net-tools
     - sysstat
-    - vim
     - wget
     - exfat-utils
   tags:
@@ -31,3 +30,6 @@
 
 - name: Upgrade all packages
   apt: upgrade=dist
+
+- name: Remove vim
+  package: name=vim state=absent

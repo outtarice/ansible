@@ -1,12 +1,10 @@
 - name: Install base packages
   apk: name={{ item }} state=present
   with_items:
-    - bash
     - ucarp
     - net-tools
     - sysstat
     - wget
-    - lynx
 
 - name: Update sshd_config
   lineinfile:
@@ -21,8 +19,3 @@
     - 'PasswordAuthentication no'
   notify:
   - restart sshd 
-
-- name: Change root shell to bash
-  user:
-    name: root
-    shell: /bin/bash

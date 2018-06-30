@@ -17,8 +17,8 @@
     - '10.0.0.42        ctd802'
     - '10.0.0.43        ctc703'
     - '10.0.0.50        ssh-vip'
-    - '10.0.0.51        cta3701'
-    - '10.0.0.52        cta3702'
+    - '10.0.0.51        vma3801'
+    - '10.0.0.52        vma3802'
 
 - name: Update /root/.ssh/authorized_keys
   lineinfile:
@@ -42,3 +42,8 @@
   with_items:
     - 'set -o vi'
     - 'export EDITOR=vi'
+- name: remove vim
+  lineinfile:
+    dest: /etc/profile
+    state: absent
+    regexp: 'alias vi=vim'
