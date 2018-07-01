@@ -1,3 +1,9 @@
+- name: Ensure updated
+  raw: apk update
+
+- name: Install python
+  raw: apk add python
+
 - name: Install base packages
   apk: name={{ item }} state=present
   with_items:
@@ -21,10 +27,9 @@
     mode: 0600
 
 - name: Create ucarp pass
-  lineinfile:
-    path: /etc/ucarp/ucarp.pass
-    state: present
-    line: "ucarpdigital"
+  copy:
+    dest: /etc/ucarp/ucarp.pass
+    content: "ucarpdigital"
 
 - name: Update sshd_config
   lineinfile:
