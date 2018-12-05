@@ -55,4 +55,4 @@
     state: present
     line: "{{ item }}"
   with_items:
-    - 'export PS1="\u@\h \[\e[32m\]\w \[\e[1m\e[93m\]\$(git branch 2>/dev/null | grep '^*' | colrm 1 2) \e[00m$ "'
+    - 'export PS1="\u@\h \e[32m\w \e[1m\e[93m\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\e[00m$ "'
