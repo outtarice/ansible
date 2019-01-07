@@ -1,0 +1,8 @@
+---
+- name: Check Inventory
+  gather_facts: True
+
+  roles:
+  - hosts
+  - base
+  - updates
