@@ -5,5 +5,5 @@
 
   roles:
   - hosts
-  - base
+#  - base
   - pve

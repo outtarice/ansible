@@ -1,2 +1,4 @@
 - name: restart sshd
   service: name=sshd state=restarted
+- name: restart pveproxy.service
+  service: name=pveproxy.service state=restarted

@@ -4,23 +4,18 @@
     state: present
     line: "{{ item }}"
   with_items:
-    - '10.0.1.11        pve1'
-    - '10.0.1.12        pve2'
-    - '10.0.1.13        pve3'
-    - '10.0.1.14        pve4'
-    - '10.0.1.15        pve5'
-    - '10.0.1.16        pve6'
-    - '10.10.10.30        pve.cls'
-    - '10.10.10.31        pve1.cls'
-    - '10.10.10.32        pve2.cls'
-    - '10.10.10.33        pve3.cls'
-    - '10.0.0.40        ctu1800 ctu1800-ansible'
-    - '10.0.0.41        ctu1801'
-    - '10.0.0.42        ctd802'
-    - '10.0.0.43        ctc703'
-    - '10.0.0.50        ssh-vip'
-    - '10.0.0.51        vma3801'
-    - '10.0.0.52        vma3802'
+    - '10.0.2.1        pve1'
+    - '10.0.2.2        pve2'
+    - '10.0.2.3        pve3'
+    - '10.0.2.4        pve4'
+    - '10.0.2.5        pve5'
+    - '10.0.2.6        pve6'
+    - '10.1.2.1        pve1.cls'
+    - '10.1.2.2        pve2.cls'
+    - '10.1.2.3        pve3.cls'
+    - '10.1.2.4        pve4.cls'
+    - '10.1.2.5        pve5.cls'
+    - '10.1.2.6        pve6.cls'
 
 - name: Update /root/.ssh/authorized_keys
   lineinfile:
@@ -28,13 +23,10 @@
     state: present
     line: "{{ item }}"
   with_items:
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA3PzWlJGIZ94yqcXPKSrL/vxhTiO5SjDtgrB08qVnA4OWQs/ll+U9LvMcaLtNfJyRbXidbQJPDzZNftKkqS2G2CnHOlPvNHleTjCu0aqz/IeAq/jBXWY9PGWGoXtduJteILrlY97AjNzD2u3asgZV2NDIl9qFjBP5G0p2QUEmck1k8T8/arLHqn3vmWK7W5ta0dJZmYTkySF/e7nbzu7kkI6skdtZtaWdRe86O4ckF5XASXVnN5pr34uUxmBBxAjsSS1OA9W+ydbbTwI+ziXA8ER5yJMZUBYxuGQI7vXfcheproXho+dh114SAIPx6bMQKX1WinYA2kxuo4tF/E9bEw== rsa-key-20180609'
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2emeGDlV8NPLG8BNhlq1HEzwW3sRaxP7hss+eLopTZYIP/5l4N4a8kRPkOW/CeuJP1w2yExi583OH6ZUQbNAm6G0rKNipyEAA0ERypNzhEvZSsx4AaHJGnh5u51nOrERvl4pM3t7Pi0BY36jC6k767ODcogrrttVwgcqibhJk6MWEnHv7gD5J3DbSuVXcQV+rBvsFjRiy839p601nx+ifkYJyAvNV4ThEDW+RV1P24tSxNx7/d3Eij5662+26ZP/LbMK9TL5ndDivQavYAw3fKhRmNeJfRwAKvZZiibF+BfdRrzN4v/2HM1WuH9ONTqwVyN7nsNiiW38E50WaUKaf peter@Peters-MacBook-Pro.local'
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6ihNPJgarBSJ86ITZtWf7nnmbv4AVtMWyQMC15JJslIIYosWk+/Io/dNUCYhpMSpwpHGCEkxROSXF3nxO8t+8dLYVOXviKeriE+dAGUp5DAIVsadyObbnTJxmnwSvPdzC9Zz+l1lYSpbTVXuf979UWkTMaiJq3GgWDILH72mywTPbevgatG0ilA7cezyUnPE6iSTygLQ1lCDlOH2TCvUyywEr2zHkRhWMHZDXxBhwRLZ6TkA1XSpeXJRYz1VWwBDnS9cexDzrE/qCT7FibW47SNDLu/DWpEQ5QtZ+H3+VySb7kXo9Z+xiK1DpDSZGiH7wSMvnYyuMsvRAwiffhjHl root@NA123'
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/Dr4X0FDnutyvhRwlWmXmJ0r3aoQNESL2Q40Rg6ynM5xG8xF05O8fUCYO2XhpJBdxhsxsEugPIyMdd4iWXmbQKuqAyQGg3IcOh7HDinkB6pqtTcGnFQx6h3y0MYTbOj18mpt6JtDgL1TzPCb4hia3nSTS3nbvyB/P6vKEljUzxa0fgTxf3spfAGnGku37mewWasDdIVKMo1BQIbihYGMsAHjvpaxs9O8NZHgIXi+6c6EM/KLdu1ZGgINsy9UOpbl1SGPW3HEkfuX0g93S2d4Hh2zf8VekFJJ959y4J1wHZ5Ab8r6Yz2eGTfGJ5bzW1hjQR3Ci4snAg8/+zPsjRSpp root@pve'
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0hzVI+Ow6BXNjPY72O6rlnlEAistD6CrFEBhyngXR1WWrAh7C5HIgUtatxwDnl5RG/q0ogTrJKc8fgPmh301KHHJwhu9B0gpzH2zZzxyAU+RFOnVO2XvY4tZx7g+3TmL+j8qwSnxXGDAr3y3TTm/6zDHEUnrsV/foxLx+45C/pSWPo5i+N/Rwg+JrI4thZiGQY4cuMMOFO7NRHksNMaBEJmnuv0m1HbVNhumHCm230Zc+k01Z6f4eoM+XOKZ+6beMapSZFSaWa4ogfvqjdF0mt1QNCbpdrgZm9x0QJnGBrWjr6EjaTzDSwrETs2zuna/nq3USv1DIPA2Ixp02UurR root@pve1'
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9I7Pdkxg6SyqJoDVNQ2KMAmUNXz9mdniRq0JjfTbUgNVVTNZQ0nD6CffxDKcYD6GWllRDr3TgtYJbDjqAMuktxzOcie3iaCKzEEefpu+/hA1UohN7Aj4oRu7GzrphcH0RkkB8WQPdT96p6a/MuNCTHGBb8PO271CeyO/6ZxgpI5cDfLLJYlfk5VMUAG+jKX4VJrzZG8+eg5JCLoCr+VVVWB3/83H3ti2N6mD4pkeoUPRG9rtfhVBrMo2eaA+KbEzqnOjSNFJd5//qYXxrO5oKf/6PLvOff0/dh2lqszA/brvLb9pTCkFxsjvrViDkWbDotC48Gtse1qmZVPqNKPgN root@pve2'
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDClxMUNgXaR9FHh8EnNuEHBGRsAm4aoNU9oYU36fg8IL49Jk6lClbFQ5uuV0Iq5Yo/9yGZNNYCEb5bO5fHFIxIrG90FNoDi3uIFWCBNJjiF6RDteZjt19qyhY5prHXRmWjgqMhRE0IgXZZy+HuOyZ8BNEb5QCIxKxn+/0/QBn0ygP8LvdLDfU3ornYjCzFYPupOu+zuyKwPTj7CsPS0jniZHEShllkYMsSynMARQFBi5mxB5KRkSr07dskrp2InfLo9CWMhIY9JulMF/uH1jmPqyN52ej3N1lRA15G90s9riVCHyxBodW6V0qcqvcGnVcw4DqnDN5QkZkwog+FgyWz root@pve3'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDODT+W/+tMTEyt0kjyILbaiYyHejvnjxfhvfpAlN6iyOXWN/iAf+k8AREFRLunP5hstOCw0N2NOyp0PgyMNivG0J3TqQwQLAhuoI2gM5A/1Ri8mTdsb34K5UGmc67gu5dUe3zpXK3EMey6S3EZR2Pd5ixuNWwvI86dzgX7miBBdZCp6h41EMUTV/mNvT2p7yuKYfvy9ZuKPLXOy0/kH4R9j1uL8AgO7y6W+pQKYIRZWSPNL1KDG9QEYS337/s14anMMI8Es5CoTE/40FLLJe86BD7573MtyhrUHH67+7xFuj0K/MbOYf8Q8bOnuS6VBMdlNa3HxyRHr/O7E36gjLvl peter@Peters-iMac.local'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDnd2zFavifiaSIX3DLhHRBS6nsgA2NpofO0h5u9Bo6t2RkkqTidCvm1dT9zGB4wO9elPNlYnC+oR7C8f9c/eofD+fRsU4VkByRN29ewQr7sBvQtjXFP6jDr+hU2Zia0p7GLnskjHhr0tjOiYBdC+56bpducOZIWgfrlNlAAIDmNm1KrNxpMcFOwp3a+r9+WEYaTojuF/2k1yNobkVHmWH+zINvYvm8Nl3xeQANgqdAMlbKRCTwj/ayXuRAQgVaXXGcTeldlKL4/iE31jx44EM+di5zm5tOOI2nZmzUIAqpl2gQV1sCCL5TzL0kke07S+X+95QWLvOPRJjY9dE8/Ng7 root@pve4'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNLRKrgc1IUjFMYHsgbjOZd+CwmXdgMt9yQ+bAin5H7ae6Yd795pjeAC6q6T2m1LdspvYXe2H+BXVEDTTrz6DTacpHDM7hMW6KpZtLetTgtUZyrTDey4VPtR0wz94sFhhamvCQVgcjmX6s65Rs9QBzagNpd90EaZbw7TykWfQXdYHxVvCjShHmkePKVW9w6hgn7phTZ3eUV5Qybz0FSzapK2bM9zPFjuOFSlrinQ1V6oBvuyThgQ/g7SCwelRwilApeQDFu9B2ebZ3XH46KnQBVZ250B4BsbmHrmiC9JtUqwPiKV7fLkIWUmtJFEXE+lno6kCJk8J4ARZfUrLAZMXT root@pve5'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOlp/bCFDNDmhdaAgEcA4nO3Qh9fYJzNCltJRUTCCO7EnkpqNKL674MbJme39LWFwfGJ1WJehZTDuDXlnozl9s0LW4VVA6MG9GXtmsUlF6YT+tvQdhJSlmHq7x6GO8/q07MLQ8cRWRzkGHKqpqZTClfwpzgavc1+bfK551kW2No3vo3kHyyPa9aIe6+46Ma9zw39ezJWio3ZLM9RspH/2zrtpu7JgSUTAayrEOlT8sXrMtgUNXSe+2GnO7h9z8ZC9JJzKfqIrEFli2V8qTodijfHAjGNUqu9tt0+zUsUg/vssxLx/a8N/dYXfL2r/FNMy7TDc/gP3egA6n4LaMhEJn root@pve6'
 
 - name: Update profile
   lineinfile:
@@ -49,10 +41,10 @@
     dest: /etc/profile
     state: absent
     regexp: 'alias vi=vim'
-- name: Add bash profile
-  lineinfile:
-    dest: /root/.bash_profile
-    state: present
-    line: "{{ item }}"
-  with_items:
-    - 'export PS1="\u@\h \e[32m\w \e[1m\e[93m\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\e[00m$ "'
+#- name: Add bash profile
+#  lineinfile:
+#    dest: /root/.bash_profile
+#    state: present
+#    line: "{{ item }}"
+#  with_items:
+#    - 'export PS1="\u@\h \e[32m\w \e[1m\e[93m\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\e[00m$ "'

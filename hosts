@@ -54,7 +54,6 @@ vma3801
 vma3802
 
 [proxmox]
-pve
-pve1
-pve2
-pve3
+pve4
+pve5
+pve6
